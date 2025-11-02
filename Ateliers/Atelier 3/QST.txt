@@ -1,0 +1,17 @@
+1). Copie superficielle vs copie profonde :
+
+La copie superficielle duplique seulement les références aux données existantes, donc les objets partagent les mêmes ressources.
+
+La copie profonde crée une nouvelle instance de toutes les données, chaque objet possède sa propre mémoire indépendante.
+
+2). Compteur statique : il doit être statique pour suivre le nombre total de comptes créés, indépendamment de chaque instance de compte.
+
+3). Méthode statique vs méthode normale :
+
+Une méthode statique appartient à la classe et peut être appelée sans créer d’objet.
+
+Une méthode normale fonctionne sur un objet spécifique et peut accéder à ses données.
+
+4). Fonction inline : pertinente pour les fonctions courtes et appelées fréquemment, afin d’éliminer le surcoût lié à l’appel de fonction.
+
+5).Oublier de libérer la mémoire : provoque des fuites mémoire, car les ressources allouées restent occupées même après la destruction de l’objet.
