@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+class vect {
+protected:
+    int nelem;
+    int* adr;
+public:
+    vect(int n) : nelem(n), adr(new int[n]) {}
+    ~vect() { delete[] adr; }
+    int& operator[](int i) { return adr[i]; }
+};
+
+class vectok : public vect {
+public:
+    vectok(int n = 0) : vect(n) {}
+    vectok(const vectok& v) : vect(v.nelem) {
+        for (int i = 0; i < nelem; ++i) adr[i] = v.adr[i];
+    }
+    vectok& operator=(const vectok& v) {
+        if (this != &v) {
+            delete[] adr;
+            nelem = v.nelem;
+            adr = new int[nelem];
+            for (int i = 0; i < nelem; ++i) adr[i] = v.adr[i];
+        }
+        return *this;
+    }
+    int taille() const { return nelem; }
+};
+
+int main() {
+    vectok v1(5);
+    v1[0] = 10;
+    vectok v2 = v1; // Copie
+    cout << "Taille de v2 : " << v2.taille() << endl;
+    cout << "v2[0] : " << v2[0] << endl;
+    return 0;
+}
